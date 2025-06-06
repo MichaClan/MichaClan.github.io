@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <title>Portfolio - Mihhail Oleinikov</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        header nav {
+            border-radius: 1rem;
+        }
+
+        header nav a {
+            margin: 0 10px;
+            padding: 8px 16px;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        header nav a:hover {
+            background-color: #495057;
+        }
+    </style>
+
+    <!-- code oom leeftijd bij te houden -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const vandaag = new Date();
+            const geboorte = new Date(2007, 1, 7); // maand is 0-based: 1 = februari
+            let leeftijd = vandaag.getFullYear() - geboorte.getFullYear();
+
+            if (
+                vandaag.getMonth() < geboorte.getMonth() ||
+                (vandaag.getMonth() === geboorte.getMonth() && vandaag.getDate() < geboorte.getDate())
+            ) {
+                leeftijd--;
+            }
+
+            document.querySelectorAll(".leeftijd").forEach(el => el.textContent = leeftijd);
+        });
+    </script>
 </head>
-<body>
-    <header>  <!-- make it rounded and hover effect above the buttons -->
-        <nav class="container text-center text-bg-dark py-4">
+
+<body class="bg-light">
+
+    <!-- Header met gecentreerde navbar -->
+    <header class="my-4">
+        <nav class="container text-center bg-dark text-white py-3 shadow">
             <a href="index.html" class="text-white text-decoration-none">Home</a>
             <a href="carriere.html" class="text-white text-decoration-none">Carrière</a>
             <a href="portfolio.html" class="text-white text-decoration-none">Portfolio</a>
@@ -19,9 +55,59 @@
             <a href="contact.html" class="text-white text-decoration-none">Contact</a>
         </nav>
     </header>
-    <main>
-        <div class=""></div>
+
+    <!-- Hero / Introductie -->
+    <main class="container">
+        <section class="text-center mb-5">
+            <h1 class="display-4">Mihhail Oleinikov</h1>
+            <p class="lead">Over Mij</p>
+        </section>
+
+        <div class="row md-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="img/who-am-i.png" class="card-img-top" alt="Wie ben ik?">
+                    <div class="card-body">
+                        <h5 class="card-title">Wie ben ik?</h5>
+                        <p class="card-text">Ik ben Mihhail Oleinikov, ook bekend als Micha. Ik ben <span
+                                class="leeftijd"></span> jaar oud en geboren in Estland.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="img/my mission.png" class="card-img-top" alt="Mijn missie">
+                    <div class="card-body">
+                        <h5 class="card-title">Mijn missie</h5>
+                        <p class="card-text">Elke dag een betere versie van mezelf worden en anderen helpen groeien met
+                            mijn kennis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="img/mijn visie.jpg" class="card-img-top" alt="Mijn visie">
+                    <div class="card-body">
+                        <h5 class="card-title">Mijn visie</h5>
+                        <p class="card-text">Vrijheid bereiken door vaardigheden op te bouwen zoals softwareontwikkeling
+                            en kennisdeling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-    <footer></footer>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <h5>Social Media</h5>
+            <p>Volg mij op mijn sociale kanalen.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
